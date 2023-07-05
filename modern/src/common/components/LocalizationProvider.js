@@ -63,7 +63,7 @@ import zh from '../../resources/l10n/zh.json';
 import zhTW from '../../resources/l10n/zh_TW.json';
 import usePersistedState from '../util/usePersistedState';
 
-const languages = {
+const AllLanguages = {
   af: { data: af, name: 'Afrikaans' },
   ar: { data: ar, name: 'العربية' },
   az: { data: az, name: 'Azərbaycanca' },
@@ -121,6 +121,26 @@ const languages = {
   zh: { data: zh, name: '中文' },
   zhTW: { data: zhTW, name: '中文 (Taiwan)' },
 };
+
+const listToAray = (fullString, separator) => {
+  let fullArray = [];
+  if (fullString !== undefined) {
+    if (fullString.indexOf(separator) === -1) {
+      fullArray.push(fullString);
+    } else {
+      fullArray = fullString.split(separator);
+    }
+  }
+  return fullArray;
+};
+
+const envLanguages = listToAray(process.env.REACT_APP_LANGUAGES, ',');
+
+const languages = envLanguages.reduce((acc, val) => {
+  const c = {};
+  c[val] = AllLanguages[val];
+  return Object.assign(acc, c);
+}, {});
 
 const getDefaultLanguage = () => {
   const browserLanguages = window.navigator.languages ? window.navigator.languages.slice() : [];
