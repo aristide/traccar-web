@@ -202,6 +202,7 @@ const LoginPage = () => {
             onClick={() => navigate('/register')}
             disabled={!registrationEnabled}
             color="secondary"
+            style={!registrationEnabled ? { display: 'None' } : {}}
           >
             {t('loginRegister')}
           </Button>
