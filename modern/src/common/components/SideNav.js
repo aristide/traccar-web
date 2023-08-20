@@ -22,7 +22,7 @@ const SideNav = ({ routes }) => {
           to={route.href}
           selected={location.pathname.match(route.match || route.href) !== null}
         >
-          <ListItemIcon>{route.icon}</ListItemIcon>
+          <ListItemIcon>{route.icon}dsdsd</ListItemIcon>
           <ListItemText primary={route.name} />
         </ListItemButton>
       )))}

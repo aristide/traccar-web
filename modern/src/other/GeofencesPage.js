@@ -111,13 +111,13 @@ const GeofencesPage = () => {
         >
           <Toolbar>
             <IconButton edge="start" sx={{ mr: 2 }} onClick={() => navigate(-1)}>
-              <ArrowBackIcon />
+              <ArrowBackIcon color="white" />
             </IconButton>
             <Typography variant="h6" className={classes.title}>{t('sharedGeofences')}</Typography>
             <label htmlFor="upload-gpx">
               <input accept=".gpx" id="upload-gpx" type="file" className={classes.fileInput} onChange={handleFile} />
               <IconButton edge="end" component="span" onClick={() => {}}>
-                <UploadFileIcon />
+                <UploadFileIcon color="white" />
               </IconButton>
             </label>
           </Toolbar>

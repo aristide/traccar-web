@@ -147,7 +147,7 @@ const LoginPage = () => {
         {nativeEnvironment && changeEnabled && (
           <Tooltip title={t('settingsServer')}>
             <IconButton onClick={() => navigate('/change-server')}>
-              <LockOpenIcon />
+              <LockOpenIcon style={{ display: 'None' }} />
             </IconButton>
           </Tooltip>
         )}
@@ -182,7 +182,7 @@ const LoginPage = () => {
           onClick={handlePasswordLogin}
           onKeyUp={handleSpecialKey}
           variant="contained"
-          color="secondary"
+          color="primary"
           disabled={!email || !password}
         >
           {t('loginLogin')}
@@ -201,6 +201,7 @@ const LoginPage = () => {
             className={classes.registerButton}
             onClick={() => navigate('/register')}
             disabled={!registrationEnabled}
+            variant="contained"
             color="secondary"
             style={!registrationEnabled ? { display: 'None' } : {}}
           >

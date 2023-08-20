@@ -60,7 +60,7 @@ const MainToolbar = ({
   return (
     <Toolbar ref={toolbarRef} className={classes.toolbar}>
       <IconButton edge="start" onClick={() => setDevicesOpen(!devicesOpen)}>
-        {devicesOpen ? <MapIcon /> : <ViewListIcon />}
+        {devicesOpen ? <MapIcon color="white" /> : <ViewListIcon color="white" />}
       </IconButton>
       <OutlinedInput
         ref={inputRef}
@@ -168,7 +168,7 @@ const MainToolbar = ({
       </Popover>
       <IconButton edge="end" onClick={() => navigate('/settings/device')} disabled={deviceReadonly}>
         <Tooltip open={!deviceReadonly && Object.keys(devices).length === 0} title={t('deviceRegisterFirst')} arrow>
-          <AddIcon />
+          <AddIcon color="white" />
         </Tooltip>
       </IconButton>
     </Toolbar>
