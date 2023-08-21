@@ -134,7 +134,7 @@ const listToAray = (fullString, separator) => {
   return fullArray;
 };
 
-const envLanguages = listToAray(process.env.REACT_APP_LANGUAGES, ',');
+const envLanguages = listToAray(import.meta.env.VITE_APP_LANGUAGES, ',');
 
 const languages = envLanguages.reduce((acc, val) => {
   const c = {};
@@ -165,7 +165,7 @@ const getDefaultLanguage = () => {
 
 const LocalizationContext = createContext({
   languages,
-  language: 'en',
+  language: 'fr',
   setLanguage: () => {},
 });
 
