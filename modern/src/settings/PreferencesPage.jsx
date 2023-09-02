@@ -19,7 +19,7 @@ import useMapStyles from '../map/core/useMapStyles';
 import useMapOverlays from '../map/overlay/useMapOverlays';
 import { useCatch } from '../reactHelper';
 import { sessionActions } from '../store';
-import { useRestriction } from '../common/util/permissions';
+import { useRestriction, useAdministrator } from '../common/util/permissions';
 
 const deviceFields = [
   { id: 'name', name: 'sharedName' },
@@ -61,6 +61,7 @@ const PreferencesPage = () => {
   const t = useTranslation();
 
   const readonly = useRestriction('readonly');
+  const admin = useAdministrator();
 
   const user = useSelector((state) => state.session.user);
   const [attributes, setAttributes] = useState(user.attributes);
@@ -346,30 +347,32 @@ const PreferencesPage = () => {
                 />
               </AccordionDetails>
             </Accordion>
-            <Accordion>
-              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                <Typography variant="subtitle1">
-                  {t('sharedInfoTitle')}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails className={classes.details}>
-                <TextField
-                  value={versionApp}
-                  label={t('settingsAppVersion')}
-                  disabled
-                />
-                <TextField
-                  value={versionServer || '-'}
-                  label={t('settingsServerVersion')}
-                  disabled
-                />
-                <TextField
-                  value={socket ? t('deviceStatusOnline') : t('deviceStatusOffline')}
-                  label={t('settingsConnection')}
-                  disabled
-                />
-              </AccordionDetails>
-            </Accordion>
+            {admin && (
+              <Accordion>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="subtitle1">
+                    {t('sharedInfoTitle')}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className={classes.details}>
+                  <TextField
+                    value={versionApp}
+                    label={t('settingsAppVersion')}
+                    disabled
+                  />
+                  <TextField
+                    value={versionServer || '-'}
+                    label={t('settingsServerVersion')}
+                    disabled
+                  />
+                  <TextField
+                    value={socket ? t('deviceStatusOnline') : t('deviceStatusOffline')}
+                    label={t('settingsConnection')}
+                    disabled
+                  />
+                </AccordionDetails>
+              </Accordion>
+            )}
             <div className={classes.buttons}>
               <Button
                 type="button"

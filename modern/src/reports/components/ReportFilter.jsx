@@ -189,7 +189,7 @@ const ReportFilter = ({ children, handleSubmit, handleSchedule, showOnly, ignore
         {showOnly ? (
           <Button
             fullWidth
-            variant="outlined"
+            variant="contained"
             color="secondary"
             disabled={disabled}
             onClick={() => handleClick('json')}
@@ -199,7 +199,7 @@ const ReportFilter = ({ children, handleSubmit, handleSchedule, showOnly, ignore
         ) : (
           <SplitButton
             fullWidth
-            variant="outlined"
+            variant="contained"
             color="secondary"
             disabled={disabled}
             onClick={handleClick}
